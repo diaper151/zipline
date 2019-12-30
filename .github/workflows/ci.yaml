@@ -48,6 +48,7 @@ jobs:
       - name: Install dependencies
         env:
           ANACONDA_TOKEN: ${{ secrets.AnacondaToken }}
+          TRAVIS_OS_NAME: osx
           CONDA_ROOT_PYTHON_VERSION: "2.7"
           NUMPY_VERSION: ${{ matrix.NUMPY_VERSION }}
           PANDAS_VERSION: ${{ matrix.PANDAS_VERSION }}
