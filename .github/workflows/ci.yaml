@@ -1,18 +1,15 @@
 name: Zipline CI
 
-on:  # temp: change workflow to run on push
+on:  # TMP: change workflow to run on push to master
   push:
     branches:
       - gh-actions-ci
-
-# TODO: Figure out travis token stuff
-# TODO: figure out if GH actions supports pip cache directory
 
 jobs:
 
   build-and-test:
 
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-18.04
 
     strategy:
       fail-fast: true
@@ -42,8 +39,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v1
 
+      - name: Cache pip files
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/.pip
+          key: ${{ matrix.python }}-pip
+
       - name: Install dependencies
         env:
+          ANACONDA_TOKEN: ${{ secrets.AnacondaToken }}
           CONDA_ROOT_PYTHON_VERSION: "2.7"
           NUMPY_VERSION: ${{ matrix.NUMPY_VERSION }}
           PANDAS_VERSION: ${{ matrix.PANDAS_VERSION }}
