@@ -9,7 +9,7 @@ jobs:
 
   build-and-test:
 
-    runs-on: macos-latest
+    runs-on: ubuntu-16.04
 
     strategy:
       fail-fast: true
