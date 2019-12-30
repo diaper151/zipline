@@ -102,6 +102,8 @@ jobs:
           conda install conda-build=3.0.28 --yes -q
           conda info -a # tmp
 
+          apt-get install build-essential
+
           CONDA_NPY=${NPY_VERSION_ARR[0]}${NPY_VERSION_ARR[1]}
           CONDA_PY=${{ matrix.python }}
 
